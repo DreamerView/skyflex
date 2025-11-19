@@ -11,7 +11,6 @@
                     <div class="d-flex gap-2">
                         <input type="text" @input="searchCity"
                             class="form-control flex-fill form-control-lg bg-body-secondary rounded-4 w-100" placeholder="Search" />
-                        <button @click="detectByGPS" class="btn btn-lg btn-secondary rounded-4"><i class="bi bi-geo"></i></button>
                     </div>
                     <div v-for="render in city">
                         <button @click="chooseCity(render?.admin1 || 'Unknown',render?.country || 'Unknown',render?.latitude || null, render?.longitude || null)" class="btn btn-lg w-100 text-start">{{ render?.admin1 || "Unknown" }},
@@ -41,51 +40,6 @@
             city.value = [];
         },250)
     }
-    const detectByGPS = () => {
-        const modalEl = document.getElementById('chooseCityModal');
-        const modal = bootstrap.Modal.getInstance(modalEl);
-
-        // Сначала закрываем модалку (обязательно для iPhone!)
-        modal.hide();
-
-        // Ждём пока анимация завершится
-        setTimeout(() => {
-            if (!navigator.geolocation) {
-                alert("Геолокация не поддерживается этим браузером");
-                return;
-            }
-
-            navigator.geolocation.getCurrentPosition(
-                async (pos) => {
-                    const lat = pos.coords.latitude;
-                    const lon = pos.coords.longitude;
-
-                    // Запрашиваем название города по координатам
-                    const req = await fetch(
-                    `https://geocoding-api.open-meteo.com/v1/reverse?latitude=${lat}&longitude=${lon}`
-                    );
-
-                    const data = await req.json();
-                    const place = data.results?.[0];
-
-                    const detectedName = place
-                        ? `${place.name}, ${place.country}`
-                        : "Your location";
-
-                    weather.setCity(detectedName, lat, lon);
-
-                    city.value = [];
-
-                },
-                (err) => {
-                    console.log("Ошибка геолокации:", err);
-                    alert("Не удалось определить местоположение");
-                }
-            );
-        }, 350); // ждём завершение fade (300ms + немного)
-    }
-
-
     const searchCity = (event) => {
         clearTimeout(debounceTimer)
         const search = event.target.value.trim()
