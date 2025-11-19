@@ -22,7 +22,11 @@
     const weather = useWeatherStore()
     const date = new Date().toLocaleString();
     const toggleTheme = () => {
-        theme.value = document.body.getAttribute("data-bs-theme");
-        document.body.setAttribute("data-bs-theme",theme.value==="dark"?"light":"dark");
-    }
+        const current = document.body.getAttribute("data-bs-theme");
+        const newTheme = current === "dark" ? "light" : "dark";
+
+        document.body.setAttribute("data-bs-theme", newTheme);
+        theme.value = newTheme; // <-- обязательно обновляем реактивное состояние
+    };
+
 </script>
