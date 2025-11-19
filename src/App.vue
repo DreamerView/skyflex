@@ -12,8 +12,8 @@
         </div>
     </div>
     <footer class="my-4 d-flex gap-1 flex-column align-items-center justify-content-center opacity-75">
-        <p class="m-0">Built with ❤️ by <a href="https://temirkhan.vercel.app">Temirkhan</a></p>
-        <p class="m-0">Project at <a href="https://github.com/DreamerView/skyflex">Github</a></p>
+        <p class="m-0">Built with ❤️ by <a target="_blank" href="https://temirkhan.vercel.app">Temirkhan</a></p>
+        <p class="m-0">Project at <a target="_blank" href="https://github.com/DreamerView/skyflex">Github</a></p>
     </footer>
 </template>
 
