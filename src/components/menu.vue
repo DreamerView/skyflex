@@ -30,19 +30,29 @@
     import { ref } from 'vue';
     import { useWeatherStore } from '../stores/weather.js'
     import * as bootstrap from 'bootstrap'
-    const theme = ref("light");
+    const theme = ref(localStorage.getItem("theme") || "light");
     const weather = useWeatherStore()
     const date = new Date().toLocaleString();
+    document.body.setAttribute("data-bs-theme", theme.value);
     const toggleTheme = () => {
         const current = document.body.getAttribute("data-bs-theme");
         const newTheme = current === "dark" ? "light" : "dark";
 
+        // обновляем тему на странице
         document.body.setAttribute("data-bs-theme", newTheme);
-        theme.value = newTheme; // <-- обязательно обновляем реактивное состояние
+
+        // сохраняем в state
+        theme.value = newTheme;
+
+        // записываем в localStorage
+        localStorage.setItem("theme", newTheme);
+
+        // закрываем модалку
         const modal = bootstrap.Modal.getInstance(
             document.getElementById('menuModal')
         );
-        modal.hide();
+        modal?.hide();
     };
+
 
 </script>
