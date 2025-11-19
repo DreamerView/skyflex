@@ -83,10 +83,12 @@ export const useWeatherStore = defineStore('weather', {
     // -----------------------------
     // 3) Смена координат вручную
     // -----------------------------
-    setCoords(lat, lon) {
+    setCoords(city,lat, lon) {
       this.latitude = lat
       this.longitude = lon
+      this.cityName = city
       this.fetchWeather()
     }
+    
   }
 })

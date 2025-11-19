@@ -1,4 +1,5 @@
 <template>
+    <Choose />
     <Menu />
     <header class="d-flex flex-wrap align-items-center justify-content-center gap-5 mt-2 opacity-75">
         <button class="btn d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#menuModal">
@@ -9,5 +10,6 @@
 </template>
 
 <script setup>
+    import Choose from './choose.vue';
     import Menu from './menu.vue';
 </script>

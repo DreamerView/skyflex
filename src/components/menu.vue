@@ -10,7 +10,7 @@
                     <p class="m-0"><span class="text-muted">Last updated:</span> {{date}}</p>
                     <hr/>
                     <p class="m-0 text-muted">Choose region</p>
-                    <button class="d-flex gap-2 rounded-4 justify-content-center btn btn-lg border border-2 bg-body-secondary border w-100">
+                    <button data-bs-toggle="modal" data-bs-target="#chooseCityModal" class="d-flex gap-2 rounded-4 justify-content-center btn btn-lg border border-2 bg-body-secondary border w-100">
                         <i class="bi bi-geo-alt fs-5 m-0"></i>
                         <span>{{ weather.cityName }}</span>
                     </button>
