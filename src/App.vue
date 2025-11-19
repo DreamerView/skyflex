@@ -26,7 +26,7 @@
     const weather = useWeatherStore()
 
     weather.detectLocation().then(()=>{
-        weather.current;
+        console.log(weather.current)
     })
 </script>
 

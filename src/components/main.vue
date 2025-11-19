@@ -1,6 +1,7 @@
 <template>
     <div class="row align-items-center">
         <div class="col-lg-6 order-lg-1 order-2">
+            <h5 class="fw-light text-muted text-lg-start text-center m-0">{{ weather.cityName }}</h5>
             <h1 class="fw-light main-header text-lg-start text-center">{{ weather.current?.temperature || 0 }}°C</h1>
             <h1 class="fw-light text-muted text-lg-start text-center">{{ getWeatherName(weather.current?.weathercode || null)}}</h1>
             <div class="row mt-5">
@@ -9,8 +10,8 @@
                     <h2 class="fw-light mt-3">{{ weather.current?.windspeed || 0 }}km/h</h2>
                 </div>
                 <div class="col-6">
-                    <span class="d-flex align-items-center gap-2 text-muted"><i class="bi bi-moisture"></i>Humidity</span>
-                    <h2 class="fw-light mt-3">70%</h2>
+                    <span class="d-flex align-items-center gap-2 text-muted"><i class="bi bi-compass"></i>Wind direction</span>
+                    <h2 class="fw-light mt-3">{{ windDirection(weather.current?.winddirection || 0) }}</h2>
                 </div>
             </div>
         </div>
@@ -26,6 +27,7 @@
     import { useWeatherStore } from '../stores/weather.js'
     import { getWeatherIcon } from '../utils/getWeatherIcon.js';
     import { getWeatherName } from '../utils/getWeatherName.js';
+    import { windDirection } from '../utils/windDirection.js';
     const weather = useWeatherStore()
 </script>
 
