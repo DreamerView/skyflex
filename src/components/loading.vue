@@ -1,7 +1,7 @@
 <template>
     <div 
         :class="weather.loading || weather.error ?'d-flex':hideEl"
-        class="align-items-center justify-content-center position-fixed bg-body"
+        class="align-items-center justify-content-center position-fixed bg-body-tertiary"
         style="width:100vw;height:100dvh;z-index:99999;"
     >
         <span v-if="!weather.error">
