@@ -29,6 +29,7 @@
 <script setup>
     import { ref } from 'vue';
     import { useWeatherStore } from '../stores/weather.js'
+    import * as bootstrap from 'bootstrap'
     const theme = ref("light");
     const weather = useWeatherStore()
     const date = new Date().toLocaleString();
@@ -38,6 +39,10 @@
 
         document.body.setAttribute("data-bs-theme", newTheme);
         theme.value = newTheme; // <-- обязательно обновляем реактивное состояние
+        const modal = bootstrap.Modal.getInstance(
+            document.getElementById('menuModal')
+        );
+        modal.hide();
     };
 
 </script>

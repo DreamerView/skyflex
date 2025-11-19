@@ -30,7 +30,7 @@
     const city = ref([])
     let debounceTimer = null;
     const chooseCity = (city,country,lan,lon) => {
-        const cityName = `${city}, ${country};`
+        const cityName = `${city}, ${country}`
         const modal = bootstrap.Modal.getInstance(
             document.getElementById('chooseCityModal')
         );
